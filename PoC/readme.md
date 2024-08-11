@@ -1,6 +1,10 @@
 # Initial PoC of Data Product LLM
 
-The plan is to leverage Large Language Models (LLMs) to automate the generation of data product specifications, data contracts, and commercial agreements. Suggested execution plan to effectively use LLMs for this purpose:
+The plan is to leverage Large Language Models (LLMs) to automate the generation of data product specifications, data contracts, and commercial agreements. 
+
+![Sketch of the plan](./PoC-planv1.jpg)
+
+Suggested execution plan to effectively use LLMs for this purpose:
 
 ## Analysis
 
