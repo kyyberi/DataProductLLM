@@ -2,7 +2,7 @@
 
 The plan is to leverage Large Language Models (LLMs) to automate the generation of data product specifications, data contracts, and commercial agreements. 
 
-![Sketch of the plan](./PoC-planv1.jpg)
+![Sketch of the plan](./v2.jpg)
 
 Suggested execution plan to effectively use LLMs for this purpose:
 
