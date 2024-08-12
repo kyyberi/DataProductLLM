@@ -2,7 +2,7 @@
 
 The plan is to leverage Large Language Models (LLMs) to automate the generation of data product specifications, data contracts, and commercial agreements. 
 
-![Sketch of the plan](./v21.jpg)
+![Sketch of the plan](./v22.jpg)
 
 We should be able to create all with 5 iterated and well-planned prompts. Suggested execution plan to effectively use LLMs for this purpose:
 
