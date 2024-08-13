@@ -10,7 +10,29 @@ We will use AI driven transcription and summary tool like fireflies AI. Those to
 
 In order to get needed data, we need to ask some targeted questions just like in any business negotation and discussions. Some answers most likely are answered very thoroughly, some partially and in some cases not at all. That is the reality. The solution must be able to act on imperfect data as input. Thus generative AI is the solution here, rather than purely coded and predefined logic. 
 
+We know that as a result we want 3 machine-readable artefacts that are generated and content matches the customer needs expressed in natural language. The 3 artefacts are: Data Product Description, Data Contract, and Commercial Agreement. This is the framework against which the questions are framed. 
+
 ### Question 1: xxxx
+
+**Aim:**  
+The aim is to figure out...
+
+**Expected information nuggets:**
+
+- ....
+- ....
+
+### Question 2: xxxx
+
+**Aim:**  
+The aim is to figure out...
+
+**Expected information nuggets:**
+
+- ....
+- ....
+
+### Question 3: xxxx
 
 **Aim:**  
 The aim is to figure out...
