@@ -53,19 +53,20 @@ This is the framework against which the questions are framed.
 
 ## Question 3: Data Quality and SLA
 
-**Aim:**  The aim is to figure out the data quality requirements and SLA levels that fulfill customer needs. 
+**Aim:**  The aim is to figure out the data quality requirements and SLA levels that fulfill customer needs. As combination of this and Question 2 we can generate the "as code" DQ and SLA rules. 
 
 **Expected information nuggets:**
 
-- ....
-- ....
+- DQ dimensions and level for those
+- SLA level
 
 **Questions to use in meeting:**
 
 - What level of data accuracy and reliability do you require?
 - How frequently should the data be updated or refreshed?
 - What is your tolerance for data latency?
-- Do you have specific service-level agreements (SLAs) in mind for data delivery and support?
+- Any other data quality dimensions that require attention? 
+- Do you have specific service-level agreements (SLAs) in mind for data delivery and support? Channels and support hours? 
 
 ## Question 4: Pricing
 
