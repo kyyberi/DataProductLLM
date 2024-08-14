@@ -24,9 +24,8 @@ This is the framework against which the questions are framed.
 
 **Expected information nuggets:**
 
-- What is the context in which data product is used? What is the value chain? 
+- What is the context in which data product is used? Can you describe the use case or project that requires this data? decision-making or operations?
 - Get the customer to explain the value created with this data product
-- Who are the users? Analysts? 
 - Can you estimate the value. Is this expected to save costs? How much? Perhaps increase sales of another product? Reduce risks? 
 
 **Questions to use in meeting:**
@@ -34,11 +33,11 @@ This is the framework against which the questions are framed.
 - Who do you see as the typical users of the data product? Perhaps analysts or something else? 
 - Can you explain what is the expected value created with the data product? 
 - What kind of gap you aim to fill in with this data product? 
-- Can you iterate in some numbers the savings, increased sales or risk reduction you aim to gain? 
+- What is the financial value of solving this problem or meeting this need as savings, increased sales or risk reduction? 
 
 ## Question 2: What is the content? 
 
-**Aim:** The aim is to figure out what kind of data is needed to create the value described by the customer. 
+**Aim:** The aim is to figure out what kind of data is needed to create the value described by the customer. Also figure out compliance requirements for data.  
 
 **Expected information nuggets:**
 
@@ -47,7 +46,10 @@ This is the framework against which the questions are framed.
 
 **Questions to use in meeting:**
 
-- ...
+- What specific data points or types of data are you looking for?
+- Are there any specific formats or structures you require the data in?
+- In what format do you need the data (e.g., CSV, API, etc.)?
+- Are there specific standards, regulatory requirements or benchmarks the data must meet?
 
 ## Question 3: Data Quality and SLA
 
@@ -57,3 +59,25 @@ This is the framework against which the questions are framed.
 
 - ....
 - ....
+
+**Questions to use in meeting:**
+
+- What level of data accuracy and reliability do you require?
+- How frequently should the data be updated or refreshed?
+- What is your tolerance for data latency?
+- Do you have specific service-level agreements (SLAs) in mind for data delivery and support?
+
+## Question 4: Pricing
+
+**Aim:**  The aim is to figure out what kind of pricing model fits in the case. With help of this we can set the pricing plan.  
+
+**Expected information nuggets:**
+
+- ....
+- ....
+
+**Questions to use in meeting:**
+
+- What budget do you have allocated for data acquisition?
+- Are you open to a subscription model, one-time purchase, or a usage-based pricing model?
+- freemium model to test the data first?
