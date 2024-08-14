@@ -1,0 +1,14 @@
+Purpose of the Data Product:
+The customer seeks a data product to enhance customer segmentation for their e-commerce platform. The main objective is to improve personalized marketing campaigns, thereby increasing customer engagement and sales. They estimate that this could lead to a 15% increase in conversion rates, translating to $2 million in additional revenue and a 10% reduction in marketing costs, saving about $500,000.
+
+Users and Gaps:
+The primary users of the data product will be data analysts and marketing teams. Analysts will develop models and insights, while marketing teams will use these insights for targeted campaigns. The customer aims to address the lack of real-time, granular data for effective personalization, as current data is too aggregated and leads to less resonant campaigns.
+
+Content Requirements:
+The customer requires detailed customer profiles, purchase history, browsing behavior, and demographic information. They also need behavioral indicators like site time, click-through rates, and abandoned cart details. The data should be in CSV or API format, comply with GDPR, and meet internal benchmarks with at least 95% accuracy and minimal missing data.
+
+Data Quality and SLA:
+The data must have 98% reliability for critical points, be refreshed daily, and tolerate up to 24 hours of latency. The customer expects consistency, minimal duplication, and a 99% uptime SLA, with support available from 9 AM to 9 PM GMT and a dedicated channel for urgent issues.
+
+Pricing Model:
+The customer has a $150,000 annual budget for data acquisition and is open to subscription, usage-based, or freemium models. They are particularly interested in testing data quality and relevance before fully committing.
