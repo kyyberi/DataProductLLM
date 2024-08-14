@@ -68,6 +68,7 @@ This is the framework against which the questions are framed.
 - Any other data quality dimensions that require attention? 
 - Do you have specific service-level agreements (SLAs) in mind for data delivery and support? Channels and support hours? 
 
+
 ## Question 4: Pricing
 
 **Aim:**  The aim is to figure out what kind of pricing model fits in the case. With help of this we can set the pricing plan.  
