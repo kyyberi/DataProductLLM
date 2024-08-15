@@ -7,7 +7,7 @@ The questions used in the customer interview are structured, but always the cust
 
 ## Prompt 1: Capture data needs
 
-Get the data needs from customer dialog. 
+Get the data needs from customer dialog. This will be used also in generating as code monitoring rules for data quality. 
 
 ## Prompt 2: Generate SLA
 
@@ -248,12 +248,10 @@ pricingPlans:
 ```
 
 
-## Prompt 4:
+## Prompt 4: Generate Data Quality rules
 
-## Prompt 5:
+## Prompt 5: Generate Data Contract
 
-## Prompt 6:
+## Prompt x: Summary the results 
 
-## Prompt 7:
-
-## Prompt 8:
+This prompt writes a summary of the results. This can be used in communicating with the customer. 
