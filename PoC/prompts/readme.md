@@ -254,4 +254,4 @@ pricingPlans:
 
 ## Prompt x: Summary the results 
 
-This prompt writes a summary of the results. This can be used in communicating with the customer. 
+This prompt writes a summary of the results. This can be used in communicating with the customer. Summarize the customer case and needs. Then explain the data product matching the needs and contributing the customer goals. 
