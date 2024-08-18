@@ -1,9 +1,25 @@
 # Prompts used
 
-We use vanilla ChatGPT 4o and following prompts. These prompt captures the customer needs from fileflies recorded transripts (prefereably we have 3 cases) and summary it creates. 
+We use vanilla ChatGPT 4o and following prompts. These prompt captures the customer needs eventually from fileflies recorded transripts (prefereably we have 3 cases) and summary it creates. In the beginning we use synthetic transcripts as input. 
 
 The questions used in the customer interview are structured, but always the customer is not able to answer to all, at least not in the first attempt. Thus it is expected that the process has to be iterative and new interview happens after each time we have generated the outcomes: data product spec, data contract and commercial agreement. 
 
+We have 6 prompts with predefined outputs: 
+
+1. Capture data needs. Outputs as YAML: 
+  - Schema of the data product (for Data Product API for consumption), 
+  - databases and fields to use for generating data contract and DQ rules as code,  
+  - needed SQLs to access data for pipeline generation. 
+2. Generate SLA. Outputs as YAML: 
+  - SLA object in ODPS format
+3. Generate Pricing plans. Outputs as YAML:
+  - Pricing object in ODPS format
+4. Generate Data Contract skeleton. Outputs as YAML:
+  - Data Contract in ODCS format
+5. Generate Commercial Agreement. Outputs as YAML:
+  - Commercial Agreement containing Licencing, Pricing, agreed DQ and SLA levels according to ODPS. 
+6. Summary of the results. Outputs as text: 
+  - a summary of the results. Summarize the customer case and needs. Then explain the data product matching the needs and contributing the customer goals.
 
 ## Prompt 1: Capture data needs
 
@@ -515,9 +531,9 @@ pricingPlans:
 ```
 
 
-## Prompt 4: Generate Data Quality rules
+## Prompt 4: Generate Data Contract
 
-## Prompt 5: Generate Data Contract
+## Prompt 5: Generate Commercial Agreement
 
 ## Prompt x: Summary the results 
 
