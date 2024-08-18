@@ -7,6 +7,7 @@ The questions used in the customer interview are structured, but always the cust
 We have 6 prompts with predefined outputs: 
 
 1. **Capture data needs.** 
+      
       OUTPUTS as YAML: 
       - Schema of the data product (for Data Product API for consumption), 
       - databases and fields to use for generating data contract and DQ rules as code,  
@@ -15,10 +16,22 @@ We have 6 prompts with predefined outputs:
       INPUTS:
       - customer dialog
 
-2. **Generate SLA. Outputs as YAML:** 
+2. **Generate SLA.** 
+
+      OUTPUTS as YAML: 
       - SLA object in ODPS format
-3. **Generate Pricing plans. Outputs as YAML:**
+
+      INPUTS: 
+      - customer dialog
+
+3. **Generate Pricing plans.** 
+
+      OUTPUTS as YAML: 
       - Pricing object in ODPS format
+
+      INPUTS: 
+      - customer dialog
+
 4. **Generate Data Contract skeleton. Outputs as YAML:**
       - Data Contract in ODCS format
 5. **Generate Licensing. Outputs as YAML:**
