@@ -7,19 +7,286 @@ The questions used in the customer interview are structured, but always the cust
 
 ## Prompt 1: Capture data needs
 
-Get the data needs from customer dialog. This will be used also in generating as code monitoring rules for data quality. 
+Get the data needs from customer dialog. In this prompt we also need available data metadata in order to match customer needs and offering. 
 
-## Prompt 2: Generate SLA
+The result should function as an input to DQ rules generation. One of the aims is to generate data quality "as code" checks with tools like SodaCL. Ask AI is a tool available to generate production-ready SodaCL checks. Of course other tools like MonteCarlo must be supported in the future. 
 
-Generate ODPS SLA object based on customer dialog.  
+The result should also enable creation of Schema for the data product. Schema will be used in the API exposing data product to customer. By default now in this PoC data products are offered and consumed via API, not direct SQL access. It also assumed here that data product provider has standardized the offering API eg. have one REST API for all the data products. In the result Schema defines the content of this specific data product in the API. 
 
 **Prompt:**
 
-https://chatgpt.com/share/f740a411-429c-4a0d-8b5d-74baa6425f1a 
+```yaml
+You are acting as product manager. Based on the dialog with customer, identify customer data needs as fields and output YAML description of those, include only database level description. Also generate SQL to access data.  Finally, generate Schema for the needed data. Schema will be used in REST API offering the data product to the customer. 
+
+
+DIALOG: 
+Role 1: Data Product Seller (Interviewer)
+
+Question 1: Purpose of the Data Product
+
+"Thank you for meeting with me today. To start off, could you please describe the purpose of the data product you're looking to acquire? Specifically, what is the context in which this data product will be used? Are you aiming to support decision-making processes, enhance operations, or something else? Also, can you elaborate on the specific value you expect to create with this data product? For example, do you anticipate that it will help save costs, increase sales, or reduce risks? Any estimates on the financial impact?"
+Role 2: Customer (Respondent)
+
+"Thank you for asking. We're looking to use this data product in the context of enhancing our customer segmentation strategy for our e-commerce platform. The main purpose is to improve the personalization of our marketing campaigns, which in turn should increase customer engagement and boost sales. The data product will be central to decision-making, particularly in analyzing customer behavior and predicting purchasing trends.
+
+In terms of value, we expect this data product to drive a 15% increase in conversion rates over the next year. This could potentially translate to an additional $50000  in revenue. Moreover, by better targeting our campaigns, we also anticipate a reduction in marketing costs by about 10%, which would amount to approximately $500 in savings."
+Role 1: Data Product Seller (Interviewer)
+
+"That's great to hear. Who do you see as the typical users of this data product? Are they primarily analysts, or do you foresee other roles utilizing this data? Additionally, can you explain what specific gap you aim to fill with this data product?"
+Role 2: Customer (Respondent)
+
+"The primary users will be our data analysts and marketing teams. The analysts will use the data to develop models and derive insights, while the marketing teams will apply these insights to craft targeted campaigns. The gap we aim to fill is the lack of real-time, granular customer data that can help us personalize our marketing efforts more effectively. Currently, our data is too aggregated, which leads to generic campaigns that don't resonate as well with our customers."
+Role 1: Data Product Seller (Interviewer)
+
+Question 2: What is the Content?
+
+"Moving on to the content of the data, what specific data points or types of data are you looking for? Are there any particular formats or structures you require the data in? And do you have any specific standards, regulatory requirements, or benchmarks that the data must meet?"
+Role 2: Customer (Respondent)
+
+"We're looking for data that includes detailed customer profiles, purchase history, browsing behavior, and demographic information such as age, gender, location, and income level. The data should also include behavioral indicators, like time spent on the site, click-through rates, and abandoned cart details.
+
+As for the format, a CSV or an API that we can easily integrate into our existing systems would be ideal. In terms of standards, the data needs to comply with GDPR regulations since we operate in Europe. It should also meet internal benchmarks for data completeness and accuracy, with at least 95% accuracy in demographic information and no more than 2% missing data points."
+Role 1: Data Product Seller (Interviewer)
+
+Question 3: Data Quality and SLA
+
+"Understood. Regarding data quality, what level of accuracy and reliability do you require for this data? How frequently should the data be updated or refreshed? What is your tolerance for data latency, and are there any other data quality dimensions that require attention? Lastly, do you have specific service-level agreements (SLAs) in mind for data delivery and support, such as channels and support hours?"
+Role 2: Customer (Respondent)
+
+"We need the data to be highly accurate—at least 98% reliability for critical data points like purchase history and demographic details. The data should be refreshed daily to ensure we are working with the most up-to-date information.
+
+Regarding latency, we can tolerate up to 24 hours of delay in data updates, but anything beyond that would start to impact our operations. We also need the data to be consistent and free from duplication, with a low error rate. In terms of SLAs, we expect 99% uptime for data access, with support available during our business hours, which are 9 AM to 9 PM GMT. We would also appreciate a dedicated support channel for urgent issues."
+Role 1: Data Product Seller (Interviewer)
+
+Question 4: Pricing
+
+"Thank you for that detailed information. Now, let’s discuss pricing. What budget do you have allocated for data acquisition? Are you open to different pricing models, such as a subscription model, a one-time purchase, or a usage-based pricing model? Would you consider a freemium model to test the data before committing fully?"
+Role 2: Customer (Respondent)
+
+"We have no clear annually for data acquisition. We are open to a subscription model, especially if it includes regular updates and support. A usage-based model could also work, provided it aligns with our expected data usage patterns. We would definitely be interested in a freemium model, allowing us to test the data quality and relevance before making a full commitment."
+```
 
 **Sample output:** 
 
-This SLA takes into account the specific requirements discussed, such as the need for high data accuracy, daily updates, and support availability during business hours. The objectives reflect the customer's expectations for data quality and support.
+
+```yaml
+
+Schema as object
+
+type: "object"
+properties:
+  customer_profiles:
+    type: "object"
+    properties:
+      customer_id:
+        type: "string"
+        description: "Unique identifier for each customer"
+      name:
+        type: "string"
+        description: "Full name of the customer"
+      age:
+        type: "integer"
+        description: "Age of the customer"
+      gender:
+        type: "string"
+        description: "Gender of the customer"
+      location:
+        type: "string"
+        description: "Location of the customer, including city and country"
+      income_level:
+        type: "string"
+        description: "Approximate income level of the customer"
+      email:
+        type: "string"
+        description: "Email address of the customer"
+
+  purchase_history:
+    type: "object"
+    properties:
+      purchase_id:
+        type: "string"
+        description: "Unique identifier for each purchase"
+      customer_id:
+        type: "string"
+        description: "Unique identifier for each customer"
+      product_id:
+        type: "string"
+        description: "Unique identifier for each product"
+      purchase_date:
+        type: "string"
+        format: "date-time"
+        description: "Date and time of purchase"
+      purchase_amount:
+        type: "number"
+        format: "float"
+        description: "Total amount spent on the purchase"
+
+  browsing_behavior:
+    type: "object"
+    properties:
+      customer_id:
+        type: "string"
+        description: "Unique identifier for each customer"
+      session_id:
+        type: "string"
+        description: "Unique identifier for each browsing session"
+      time_spent:
+        type: "integer"
+        description: "Total time spent on the site during the session"
+      pages_visited:
+        type: "array"
+        items:
+          type: "string"
+        description: "List of pages visited during the session"
+      click_through_rate:
+        type: "number"
+        format: "float"
+        description: "Ratio of clicks to impressions"
+      abandoned_cart:
+        type: "boolean"
+        description: "Indicates whether the cart was abandoned (true/false)"
+
+  demographic_information:
+    type: "object"
+    properties:
+      customer_id:
+        type: "string"
+        description: "Unique identifier for each customer"
+      age:
+        type: "integer"
+        description: "Age of the customer"
+      gender:
+        type: "string"
+        description: "Gender of the customer"
+      location:
+        type: "string"
+        description: "Location of the customer, including city and country"
+      income_level:
+        type: "string"
+        description: "Approximate income level of the customer"
+
+
+```
+
+
+## Prompt 2: Generate SLA
+
+Generate ODPS SLA object based on customer dialog.  This SLA takes into account the specific requirements discussed, such as the need for high data accuracy, daily updates, and support availability during business hours. The objectives reflect the customer's expectations for data quality and support.
+
+**Prompt:**
+
+```yaml
+You are acting as product manager. Based on the dialog with customer, draft SLA  according to Open Data Product Specification. Provide just the SLA component as YAML.  Schema of the SLA object is available at https://opendataproducts.org/v3.0/schema/odps.yaml. Follow the Schema!
+
+Here is an example of typical SLA object. Do not follow it precisely, take the customers needs into account and give enough variance in the result:
+
+
+SLA:
+  - dimension: latency
+    displaytitle:
+      - en: Latency
+    objective: 100
+    unit: milliseconds
+  
+  - dimension: uptime
+    displaytitle:
+      - en: Uptime
+    objective: 99
+    unit: percent
+    
+  - dimension: responseTime
+    objective: 200
+    unit: milliseconds
+    
+
+  - dimension: updateFrequency
+    objective: 30
+    unit: minutes
+    
+  - dimension: errorRate
+    objective: 0.1
+    unit: percent
+
+  - dimension: endOfSupport
+    objective: 01/01/2025 # dd/mm/yyyy
+    unit: date
+
+  - dimension: endOfLife
+    objective: 01/03/2025 # dd/mm/yyyy
+    unit: date
+
+  - dimension: timeToDetect
+    objective: 60
+    unit: minutes
+
+  - dimension: timeToNotify
+    objective: 120
+    unit: minutes
+
+  - dimension: timeToRepair
+    objective: 24
+    unit: hours
+
+  - dimension: emailResponseTime
+    objective: 12
+    unit: hours
+
+  support:
+      phoneNumber: '+971508976456'
+      phoneServiceHours: 'Mon-Fri 8am-4pm (GMT)'
+      email: support@opendataproducts.org
+      emailServiceHours: 'Mon-Fri 8am-4pm (GMT)'
+      documentationURL: ''
+
+
+DIALOG: 
+Role 1: Data Product Seller (Interviewer)
+
+Question 1: Purpose of the Data Product
+
+"Thank you for meeting with me today. To start off, could you please describe the purpose of the data product you're looking to acquire? Specifically, what is the context in which this data product will be used? Are you aiming to support decision-making processes, enhance operations, or something else? Also, can you elaborate on the specific value you expect to create with this data product? For example, do you anticipate that it will help save costs, increase sales, or reduce risks? Any estimates on the financial impact?"
+Role 2: Customer (Respondent)
+
+"Thank you for asking. We're looking to use this data product in the context of enhancing our customer segmentation strategy for our e-commerce platform. The main purpose is to improve the personalization of our marketing campaigns, which in turn should increase customer engagement and boost sales. The data product will be central to decision-making, particularly in analyzing customer behavior and predicting purchasing trends.
+
+In terms of value, we expect this data product to drive a 15% increase in conversion rates over the next year. This could potentially translate to an additional $50000  in revenue. Moreover, by better targeting our campaigns, we also anticipate a reduction in marketing costs by about 10%, which would amount to approximately $500 in savings."
+Role 1: Data Product Seller (Interviewer)
+
+"That's great to hear. Who do you see as the typical users of this data product? Are they primarily analysts, or do you foresee other roles utilizing this data? Additionally, can you explain what specific gap you aim to fill with this data product?"
+Role 2: Customer (Respondent)
+
+"The primary users will be our data analysts and marketing teams. The analysts will use the data to develop models and derive insights, while the marketing teams will apply these insights to craft targeted campaigns. The gap we aim to fill is the lack of real-time, granular customer data that can help us personalize our marketing efforts more effectively. Currently, our data is too aggregated, which leads to generic campaigns that don't resonate as well with our customers."
+Role 1: Data Product Seller (Interviewer)
+
+Question 2: What is the Content?
+
+"Moving on to the content of the data, what specific data points or types of data are you looking for? Are there any particular formats or structures you require the data in? And do you have any specific standards, regulatory requirements, or benchmarks that the data must meet?"
+Role 2: Customer (Respondent)
+
+"We're looking for data that includes detailed customer profiles, purchase history, browsing behavior, and demographic information such as age, gender, location, and income level. The data should also include behavioral indicators, like time spent on the site, click-through rates, and abandoned cart details.
+
+As for the format, a CSV or an API that we can easily integrate into our existing systems would be ideal. In terms of standards, the data needs to comply with GDPR regulations since we operate in Europe. It should also meet internal benchmarks for data completeness and accuracy, with at least 95% accuracy in demographic information and no more than 2% missing data points."
+Role 1: Data Product Seller (Interviewer)
+
+Question 3: Data Quality and SLA
+
+"Understood. Regarding data quality, what level of accuracy and reliability do you require for this data? How frequently should the data be updated or refreshed? What is your tolerance for data latency, and are there any other data quality dimensions that require attention? Lastly, do you have specific service-level agreements (SLAs) in mind for data delivery and support, such as channels and support hours?"
+Role 2: Customer (Respondent)
+
+"We need the data to be highly accurate—at least 98% reliability for critical data points like purchase history and demographic details. The data should be refreshed daily to ensure we are working with the most up-to-date information.
+
+Regarding latency, we can tolerate up to 24 hours of delay in data updates, but anything beyond that would start to impact our operations. We also need the data to be consistent and free from duplication, with a low error rate. In terms of SLAs, we expect 99% uptime for data access, with support available during our business hours, which are 9 AM to 9 PM GMT. We would also appreciate a dedicated support channel for urgent issues."
+Role 1: Data Product Seller (Interviewer)
+
+Question 4: Pricing
+
+"Thank you for that detailed information. Now, let’s discuss pricing. What budget do you have allocated for data acquisition? Are you open to different pricing models, such as a subscription model, a one-time purchase, or a usage-based pricing model? Would you consider a freemium model to test the data before committing fully?"
+Role 2: Customer (Respondent)
+
+"We have no clear annually for data acquisition. We are open to a subscription model, especially if it includes regular updates and support. A usage-based model could also work, provided it aligns with our expected data usage patterns. We would definitely be interested in a freemium model, allowing us to test the data quality and relevance before making a full commitment."
+```
+
+**Sample output:** 
 
 ```yaml
 SLA:
