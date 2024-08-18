@@ -1,0 +1,91 @@
+type: "object"
+properties:
+  customer_profiles:
+    type: "object"
+    properties:
+      customer_id:
+        type: "string"
+        description: "Unique identifier for each customer"
+      name:
+        type: "string"
+        description: "Full name of the customer"
+      age:
+        type: "integer"
+        description: "Age of the customer"
+      gender:
+        type: "string"
+        description: "Gender of the customer"
+      location:
+        type: "string"
+        description: "Location of the customer, including city and country"
+      income_level:
+        type: "string"
+        description: "Approximate income level of the customer"
+      email:
+        type: "string"
+        description: "Email address of the customer"
+
+  purchase_history:
+    type: "object"
+    properties:
+      purchase_id:
+        type: "string"
+        description: "Unique identifier for each purchase"
+      customer_id:
+        type: "string"
+        description: "Unique identifier for each customer"
+      product_id:
+        type: "string"
+        description: "Unique identifier for each product"
+      purchase_date:
+        type: "string"
+        format: "date-time"
+        description: "Date and time of purchase"
+      purchase_amount:
+        type: "number"
+        format: "float"
+        description: "Total amount spent on the purchase"
+
+  browsing_behavior:
+    type: "object"
+    properties:
+      customer_id:
+        type: "string"
+        description: "Unique identifier for each customer"
+      session_id:
+        type: "string"
+        description: "Unique identifier for each browsing session"
+      time_spent:
+        type: "integer"
+        description: "Total time spent on the site during the session"
+      pages_visited:
+        type: "array"
+        items:
+          type: "string"
+        description: "List of pages visited during the session"
+      click_through_rate:
+        type: "number"
+        format: "float"
+        description: "Ratio of clicks to impressions"
+      abandoned_cart:
+        type: "boolean"
+        description: "Indicates whether the cart was abandoned (true/false)"
+
+  demographic_information:
+    type: "object"
+    properties:
+      customer_id:
+        type: "string"
+        description: "Unique identifier for each customer"
+      age:
+        type: "integer"
+        description: "Age of the customer"
+      gender:
+        type: "string"
+        description: "Gender of the customer"
+      location:
+        type: "string"
+        description: "Location of the customer, including city and country"
+      income_level:
+        type: "string"
+        description: "Approximate income level of the customer"

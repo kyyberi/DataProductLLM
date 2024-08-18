@@ -1,0 +1,56 @@
+SLA:
+  - dimension: latency
+    displaytitle:
+      - en: Latency
+    objective: 100
+    unit: milliseconds
+  
+  - dimension: uptime
+    displaytitle:
+      - en: Uptime
+    objective: 99
+    unit: percent
+    
+  - dimension: responseTime
+    objective: 200
+    unit: milliseconds
+    
+
+  - dimension: updateFrequency
+    objective: 30
+    unit: minutes
+    
+  - dimension: errorRate
+    objective: 0.1
+    unit: percent
+
+  - dimension: endOfSupport
+    objective: 01/01/2025 # dd/mm/yyyy
+    unit: date
+
+  - dimension: endOfLife
+    objective: 01/03/2025 # dd/mm/yyyy
+    unit: date
+
+  - dimension: timeToDetect
+    objective: 60
+    unit: minutes
+
+  - dimension: timeToNotify
+    objective: 120
+    unit: minutes
+
+  - dimension: timeToRepair
+    objective: 24
+    unit: hours
+
+  - dimension: emailResponseTime
+    objective: 12
+    unit: hours
+
+  support:
+      phoneNumber: '+971508976456'
+      phoneServiceHours: 'Mon-Fri 8am-4pm (GMT)'
+      email: support@opendataproducts.org
+      emailServiceHours: 'Mon-Fri 8am-4pm (GMT)'
+      documentationURL: ''
