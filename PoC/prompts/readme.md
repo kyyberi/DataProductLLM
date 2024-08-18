@@ -10,7 +10,7 @@ We have 6 prompts with predefined outputs:
       
       OUTPUTS as YAML: 
       - Schema of the data product (for Data Product API for consumption), 
-      - databases and fields to use for generating data contract and DQ rules as code,  
+      - Data description: databases and fields to use for generating data contract and DQ rules as code,  
       - needed SQLs to access data for pipeline generation. 
 
       INPUTS:
@@ -23,6 +23,7 @@ We have 6 prompts with predefined outputs:
 
       INPUTS: 
       - customer dialog
+      - Provider fixed details for support: email service hours, phone support hours, phone number, email.
 
 3. **Generate Pricing plans.** 
 
@@ -32,13 +33,27 @@ We have 6 prompts with predefined outputs:
       INPUTS: 
       - customer dialog
 
-4. **Generate Data Contract skeleton. Outputs as YAML:**
+4. **Generate Data Contract skeleton.**
+
+      OUTPUTS as YAML: 
       - Data Contract in ODCS format
+
+      INPUTS: 
+      - customer dialog
+
+5. **Generate Data Quality object**
+
+      OUTPUTS as YAML: 
+      - YAML 
+
+      INPUTS: 
+      - Data Description from prompt 1
+
 5. **Generate Licensing. Outputs as YAML:**
       - Licensing object in ODPS format
 6. **Generate Commercial Agreement. Outputs as YAML:**
       - Commercial Agreement containing Licencing, Pricing, agreed DQ and SLA levels according to ODPS. 
-7. **Summary of the results. Outputs as text:** 
+7. **Summarize of the results. Outputs as text:** 
       - a summary of the results. Summarize the customer case and needs. Then explain the data product matching the needs and contributing the customer goals.
 
 ## Prompt 1: Capture data needs
